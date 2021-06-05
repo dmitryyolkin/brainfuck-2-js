@@ -1,0 +1,50 @@
+// Initial template to translate Brainfuck instructions to JavaScript
+'use strict'
+
+const fs = require('fs')
+
+const data = [0]
+let ptr = 0
+
+function printCurrentData() {
+  var asciiCode = data[ptr]
+  var char = String.fromCharCode(asciiCode)
+  process.stdout.write(char)
+}
+
+function arrayExtend(newIndex) {
+  if (newIndex >= data.length) {
+    let n = newIndex - data.length + 1
+    for (var i = 0; i < n; i++){
+      data.push(0);
+    }
+  }
+}
+
+function readSymbolFromStdIn() {
+  let buffer = Buffer.alloc(1)
+  fs.readSync(0, buffer, 0, 1)
+  let symbol = buffer.toString('utf8')
+  return symbol.charCodeAt(0) // convert to ASCII code
+}
+
+function plus(commandCount) {
+  let v = data[ptr]
+  if (v + commandCount > 255) {
+    v = (v + commandCount) - 256
+  } else {
+    v += commandCount
+  }
+  data[ptr] = v
+}
+
+function minus(commandCount) {
+  let v = data[ptr]
+  if (v - commandCount < 0) {
+    v = (v - commandCount) + 256
+  } else {
+    v -= commandCount
+  }
+  data[ptr] = v
+}
+
