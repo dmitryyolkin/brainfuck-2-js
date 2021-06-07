@@ -37,7 +37,7 @@ function addJavaScriptCode(command, commandCount) {
         case BRAINFUCK_ASCII_CODE.Minus:
             return 'minus(' + commandCount + ');\n'
         case BRAINFUCK_ASCII_CODE.Left:
-            return 'ptr-= ' + commandCount + ';\n';
+            return 'if(!ptr) { throw Error("Data pointer can not be negative"); } ptr-= ' + commandCount + ';\n';
         case BRAINFUCK_ASCII_CODE.Right:
             return 'ptr+=' + commandCount + ';\n' + 'arrayExtend(ptr);\n';
         case BRAINFUCK_ASCII_CODE.Dot:
