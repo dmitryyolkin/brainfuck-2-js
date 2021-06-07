@@ -2,10 +2,6 @@
 
 const fs = require('fs')
 
-// Links:
-//  * Brainfuck from wiki -> https://ru.wikipedia.org/wiki/Brainfuck#%D0%AF%D0%B7%D1%8B%D0%BA%D0%B8_%D0%BD%D0%B0_%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B5_Brainfuck
-//  * ASCII codes table -> https://snipp.ru/handbk/table-ascii
-
 const BRAINFUCK_ASCII_CODE = {
     Plus: 43, // +
     Minus: 45, // -
